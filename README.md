@@ -60,6 +60,23 @@ Le dossier `out/` contient le site entièrement statique prêt à être déploy�
 - **Netlify** : Drag and drop le dossier `out/`
 - **GitHub Pages** : Push le contenu du dossier `out/` sur la branche `gh-pages`
 
+### Option Docker
+
+Une configuration Docker est fournie pour servir le site exporté via Nginx :
+
+\`\`\`bash
+# Construire l'image
+docker compose build
+
+# Lancer le conteneur (http://localhost:3000)
+docker compose up
+\`\`\`
+
+Le `Dockerfile` utilise un build multi-étapes :
+
+1. **builder** : installe les dépendances avec `pnpm install --frozen-lockfile` puis exécute `pnpm run build` pour générer `out/`.
+2. **runner** : copie `out/` dans une image `nginx:alpine` allégée exposant le port 80. Le fichier `docker-compose.yml` mappe ce port sur le port 3000 de votre machine.
+
 ## Configuration
 
 Le fichier `next.config.js` est configuré pour l'export statique :
