@@ -6,5 +6,7 @@ services:
       context: .
       target: runner
     ports:
-      - '3000:3002' # <-- modifié : exposer le port 3000 du container sur le port 3000 de l'hôte
+      - '3010:3000' # <-- modifié : exposer le port 3010 de l'hôte vers le port 3000 du conteneur
+    environment:
+      - PORT=3000  # <-- laisser Next.js écouter sur 3000 dans le conteneur
     restart: unless-stopped
