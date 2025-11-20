@@ -6,5 +6,5 @@ services:
       context: .
       target: runner
     ports:
-      - '3000:3000' # <-- modifié : exposer le port 3000 du container sur le port 3000 de l'hôte
+      - '3000:3002' # <-- modifié : exposer le port 3000 du container sur le port 3000 de l'hôte
     restart: unless-stopped
