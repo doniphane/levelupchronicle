@@ -180,6 +180,9 @@ const Navbar = ({ isScrolled, isMobileMenuOpen, setIsMobileMenuOpen }: NavbarPro
             <a href="#about" className="hover:text-red-500 transition">
               À propos
             </a>
+            <a href="/article" className="hover:text-red-500 transition">
+              Articles
+            </a>
             <a href="/video" className="hover:text-red-500 transition">
               Vidéos
             </a>
@@ -208,6 +211,9 @@ const Navbar = ({ isScrolled, isMobileMenuOpen, setIsMobileMenuOpen }: NavbarPro
             </a>
             <a href="#about" className="block hover:text-red-500 transition">
               À propos
+            </a>
+            <a href="/article" className="block hover:text-red-500 transition">
+              Articles
             </a>
             <a href="/video" className="block hover:text-red-500 transition">
               Vidéos
