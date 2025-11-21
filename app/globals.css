@@ -153,6 +153,34 @@ body {
 .animation-delay-3 { animation-delay: 0.3s; }
 .animation-delay-4 { animation-delay: 0.4s; }
 
+/* Animation pour les barres de progression */
+/* Cette animation fait partir la barre de 0% et l'anime jusqu'à sa largeur finale */
+@keyframes progress {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+    opacity: 0.5;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+/* Animation shimmer pour l'effet de brillance */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
 /* Responsive text */
 @media (max-width: 768px) {
   body {

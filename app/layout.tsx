@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'LevelUp Chronicle - Gaming Blog',
+  title: 'Team Kuroizana - Gaming Blog',
   description: 'Discover epic gaming moments, gameplay tips, and gaming culture. Your gateway to gaming excellence.',
-  generator: 'v0.app',
+
 }
 
 export default function RootLayout({
@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <head>
         <script src="https://cdn.tailwindcss.com"></script>
         <style>{`
