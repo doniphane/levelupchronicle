@@ -125,6 +125,12 @@ const allVideos = [
     description: "Premier live de la série ATM10 To the Sky",
     youtubeId: "FrcnmAvJh04",
   },
+   {
+    id: "video-05",
+    title: "The division 2 Episode 1 avec la team Kuroizana ",
+    description: "Episode 1 de la série The division 2 avec la team Kuroizana",
+    youtubeId: "CC8cc2HTkNo",
+  },
 ];
 
 // Fonction pour trier les vidéos par ID en ordre décroissant

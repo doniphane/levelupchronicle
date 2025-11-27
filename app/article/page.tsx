@@ -12,6 +12,7 @@ interface ArticleCardInfo {
   description: string;
   author: string;
   date: string;
+  updatedAt?: string;
   readTime: string;
   category: string;
   href: string;
@@ -26,7 +27,8 @@ const articleCards: ArticleCardInfo[] = [
     description:
       "Découvrez la liste de tous les dinos apprivoisés sur le serveur ASA avec la Team Kuroizana.",
     author: "Team Kuroizana",
-    date: "2025-01-15",
+    date: "2025-11-21",
+    updatedAt: "2025-11-27",
     readTime: "5 min",
     category: "Guide",
     href: "/article/ark-debuter",
@@ -88,7 +90,14 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
             {/* Date */}
             <div className="flex items-center gap-2 text-gray-400 text-sm">
               <Calendar className="w-4 h-4" />
-              <span>{article.date}</span>
+              <span className={article.updatedAt ? 'line-through text-gray-500' : ''}>
+                {article.date}
+              </span>
+              {article.updatedAt && (
+                <span className="text-amber-400 ml-1" title="Mis à jour">
+                  → {article.updatedAt}
+                </span>
+              )}
             </div>
 
             {/* Temps de lecture */}
