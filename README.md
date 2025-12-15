@@ -1,153 +1,95 @@
-# LevelUp Chronicle - Gaming Blog
+# LevelUp Chronicle
 
-Un blog de gaming statique construit avec Next.js, présentant les meilleurs clips vidéo de gameplay avec un design cyberpunk sombre et des effets néon.
+Blog gaming de la **Team Kuroizana** - Découvrez nos aventures, guides et vidéos sur nos jeux préférés.
 
-## Caractéristiques
+## 🎮 À propos
 
-- ✨ Design cyberpunk sombre avec accents néon (rouge crimson, violet, cyan, rose)
-- 🎮 Grille responsive de vidéos YouTube embarquées
-- 🚀 Effet glassmorphisme sur la navbar et les cartes
-- 📱 Entièrement responsive (mobile, tablette, desktop)
-- ⚡ Performance optimisée pour l'export statique
-- 🎬 Vidéo de background en héro section
-- 🌐 Entièrement en français
+LevelUp Chronicle est le blog officiel de la Team Kuroizana où nous partageons :
+- 📝 **Articles et guides** sur nos sessions de jeu
+- 🎬 **Vidéos** de nos meilleures aventures
+- 🏗️ **Tutoriels** et astuces gaming
+- 🦖 **Récits** de nos exploits sur ARK, Minecraft, The Division 2 et plus
 
-## Structure du site
+## 🚀 Technologies
 
-- **Navbar fixe** : Navigation fluide avec effet blur au scroll
-- **Hero Section** : Vidéo de background avec overlay sombre
-- **Grille de vidéos** : 3 colonnes desktop, 2 tablette, 1 mobile
-- **À propos** : Présentation de la plateforme
-- **Contact** : Formulaire et liens sociaux
-- **Footer** : Copyright et liens additionnels
+- **[Next.js 16](https://nextjs.org/)** - Framework React avec App Router
+- **[React 19](https://react.dev/)** - Bibliothèque UI
+- **[TypeScript](https://www.typescriptlang.org/)** - Typage statique
+- **[Tailwind CSS 4](https://tailwindcss.com/)** - Framework CSS utilitaire
+- **[Lucide React](https://lucide.dev/)** - Icônes modernes
+- **[Vercel](https://vercel.com/)** - Déploiement et hébergement
 
-## Stack Technique
+## 📁 Structure
 
-- **Framework** : Next.js 16 (App Router)
-- **Styling** : Tailwind CSS v4 (via CDN)
-- **Type** : Static Export (SSG)
-- **Format** : JSX/React
+```
+levelupchronicle/
+├── app/                      # Pages Next.js
+│   ├── page.tsx             # Page d'accueil
+│   ├── article/             # Pages articles
+│   └── video/               # Page vidéos
+├── components/              # Composants React
+│   └── blog/                # Composants du blog
+├── lib/                     # Utilitaires
+│   └── blogData.ts          # Données du blog
+└── public/                  # Assets statiques
+```
 
-## Installation
+## 🛠️ Installation
 
-### Option 1 : Avec shadcn CLI (Recommandé)
+```bash
+# Installer les dépendances
+pnpm install
 
-\`\`\`bash
-npx shadcn-cli@latest init
-# Sélectionner les options par défaut, puis
-npm install
-npm run dev
-\`\`\`
+# Lancer en développement
+pnpm dev
 
-### Option 2 : Installation manuelle
+# Build pour production
+pnpm build
+```
 
-\`\`\`bash
-npm install
-npm run dev
-\`\`\`
+Le site sera disponible sur [http://localhost:3000](http://localhost:3000)
 
-## Déploiement
+## ✍️ Ajouter du contenu
 
-Pour générer le site statique :
+Pour ajouter un article ou une vidéo, éditez le fichier `lib/blogData.ts` :
 
-\`\`\`bash
-npm run build
-\`\`\`
-
-Le dossier `out/` contient le site entièrement statique prêt à être déployé sur :
-
-- **Vercel** : `vercel deploy`
-- **Netlify** : Drag and drop le dossier `out/`
-- **GitHub Pages** : Push le contenu du dossier `out/` sur la branche `gh-pages`
-
-### Option Docker
-
-Une configuration Docker est fournie pour servir le site exporté via Nginx :
-
-\`\`\`bash
-# Construire l'image
-docker compose build
-
-# Lancer le conteneur (http://localhost:3000)
-docker compose up
-\`\`\`
-
-Le `Dockerfile` utilise un build multi-étapes :
-
-1. **builder** : installe les dépendances avec `pnpm install --frozen-lockfile` puis exécute `pnpm run build` pour générer `out/`.
-2. **runner** : copie `out/` dans une image `nginx:alpine` allégée exposant le port 80. Le fichier `docker-compose.yml` mappe ce port sur le port 3000 de votre machine.
-
-## Configuration
-
-Le fichier `next.config.js` est configuré pour l'export statique :
-
-\`\`\`javascript
-const nextConfig = {
-  output: 'export',
-  images: {
-    unoptimized: true
-  }
-}
-\`\`\`
-
-## Personnalisation
-
-### Changer les vidéos
-
-Modifiez l'array `videos` dans `app/page.jsx` avec vos propres IDs YouTube :
-
-\`\`\`javascript
-const videos = [
+```typescript
+// Ajouter un article
+export const articles: BlogContent[] = [
   {
-    id: 1,
+    id: "article-04",
+    type: "article",
     title: "Votre titre",
-    youtubeId: "votre_id_youtube",
-    date: "Date",
-    game: "Jeu",
-    category: "Catégorie"
+    description: "Description courte",
+    author: "Team Kuroizana",
+    date: "2025-12-15",
+    category: "Guide",
+    tags: ["Tag1", "Tag2"],
+    href: "/article/votre-slug",
+    // ...
   },
-  // ...
-]
-\`\`\`
+];
 
-### Couleurs personnalisées
+// Ajouter une vidéo
+export const videos: BlogContent[] = [
+  {
+    id: "video-06",
+    type: "video",
+    title: "Titre vidéo",
+    youtubeId: "VOTRE_ID_YOUTUBE",
+    // ...
+  },
+];
+```
 
-Les couleurs sont définies dans `app/globals.css` (variables CSS) :
+## 🌐 Déploiement sur Vercel
 
-\`\`\`css
-:root {
-  --background: #0a0e27;
-  --primary: #dc2626;
-  --accent-cyan: #06b6d4;
-  --accent-pink: #ec4899;
-}
-\`\`\`
+Le site est déployé automatiquement sur **Vercel** :
 
-### Vidéo de background
+1. Push sur la branche `main`
+2. Vercel détecte les changements
+3. Build et déploiement automatique
 
-Remplacez l'URL source dans la `HeroSection` :
+## 📝 Licence
 
-\`\`\`jsx
-<source src="votre_video.mp4" type="video/mp4" />
-\`\`\`
-
-## Scripts disponibles
-
-- `npm run dev` : Lancer le serveur de développement
-- `npm run build` : Générer le site statique
-- `npm start` : Servir le site statique en local
-
-## Notes importantes
-
-- ⚠️ Ce site est **100% statique** - pas de SSR, pas d'API routes
-- 📍 Les iframes YouTube utilisent `youtube-nocookie.com` pour plus de confidentialité
-- 🎯 Tailwind CSS est chargé via CDN pour la simplicité
-- 🚫 Les images Next/Image ne sont pas utilisées (incompatibles avec l'export statique)
-
-## Support
-
-Pour toute question ou problème, consultez la [documentation Next.js](https://nextjs.org/docs) ou la [documentation Tailwind](https://tailwindcss.com/docs).
-
----
-
-Fait avec ❤️ pour la communauté gaming
+© 2025 Team Kuroizana - Tous droits réservés

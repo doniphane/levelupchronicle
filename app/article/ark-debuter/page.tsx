@@ -2,6 +2,9 @@
 
 import Link from "next/link";
 import { Calendar, Clock, User, ArrowLeft } from "lucide-react";
+import ReadingProgress from "@/components/blog/ReadingProgress";
+import RelatedContent from "@/components/blog/RelatedContent";
+import Breadcrumb from "@/components/blog/Breadcrumb";
 
 // Interface pour typer les informations de l'article
 interface ArticleMeta {
@@ -144,15 +147,17 @@ const dinos: Dino[] = [
 export default function ArkDebuterArticlePage() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-black via-slate-950 to-black">
+      {/* Barre de progression de lecture */}
+      <ReadingProgress />
+
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24 space-y-8">
-        {/* Bouton de retour vers la liste des articles */}
-        <Link
-          href="/article"
-          className="inline-flex items-center gap-2 text-red-400 hover:text-red-300 transition"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Retour aux articles
-        </Link>
+        {/* Breadcrumb */}
+        <Breadcrumb
+          items={[
+            { label: "Articles", href: "/article" },
+            { label: "Liste de dinos apprivoisés" }
+          ]}
+        />
 
         {/* En-tête de l'article */}
         <header className="space-y-6">
@@ -259,6 +264,9 @@ export default function ArkDebuterArticlePage() {
             </article>
           ))}
         </div>
+
+        {/* Contenu connexe */}
+        <RelatedContent currentContentId="article-01" limit={3} />
 
         {/* Bouton bas de page pour revenir à la liste */}
         <div className="flex justify-center pt-4">

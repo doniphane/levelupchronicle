@@ -12,12 +12,13 @@ import {
   Cpu,
   MemoryStick,
   HardDrive,
-  ChevronLeft,
   ChevronRight,
   Activity,
   Zap,
   CheckCircle2,
 } from "lucide-react";
+import { getLatestContent } from "@/lib/blogData";
+import ContentCard from "@/components/blog/ContentCard";
 
 const serverSpecs = [
   {
@@ -98,56 +99,6 @@ const socialLinks = [
     border: "border-purple-500/40",
   },
 ];
-
-// Liste de toutes les vidéos disponibles
-const allVideos = [
-  {
-    id: "video-01",
-    title: "ARK ASCENDED - ÉPISODE 3 : MUTATIONS EXTRÊMES JE TEST LES PREMIER MODS ABUSER",
-    description: "découvrez le dernier épisode de la série ARK ASCENDED",
-    youtubeId: "PVIFroaaQw4",
-  },
-  {
-    id: "video-02",
-    title: "ARK Survival Ascended - ÉPISODE 1 avec la Team Kuroizana - L'Aventure Commence",
-    description: "découvrez le premier épisode de la série ARK ASCENDED",
-    youtubeId: "zfRTYEL_g1E",
-  },
-  {
-    id: "video-03",
-    title: "ARK Survival Ascended - ÉPISODE 2: Construction de la Base Kuroizana",
-    description: "découvrez le deuxième épisode de la série ARK ASCENDED",
-    youtubeId: "YA52SMFTYmU",
-  },
-  {
-    id: "video-04",
-    title: "ATM10 To the Sky #1 - Skyblock dans les airs | Recap du premier live",
-    description: "Premier live de la série ATM10 To the Sky",
-    youtubeId: "FrcnmAvJh04",
-  },
-   {
-    id: "video-05",
-    title: "The division 2 Episode 1 avec la team Kuroizana ",
-    description: "Episode 1 de la série The division 2 avec la team Kuroizana",
-    youtubeId: "CC8cc2HTkNo",
-  },
-];
-
-// Fonction pour trier les vidéos par ID en ordre décroissant
-// On extrait le numéro de l'ID (par exemple "04" de "video-04") et on compare
-const sortVideosByDescendingId = (videos: typeof allVideos) => {
-  return [...videos].sort((a, b) => {
-    // On extrait le numéro de chaque ID (par exemple "04" de "video-04")
-    const numA = parseInt(a.id.replace("video-", ""), 10);
-    const numB = parseInt(b.id.replace("video-", ""), 10);
-    // On trie en ordre décroissant (les plus grands nombres en premier)
-    return numB - numA;
-  });
-};
-
-// On trie toutes les vidéos par ID décroissant, puis on prend les 3 premières
-// Cela donnera : video-04, video-03, video-02 (les IDs les plus grands en premier)
-const latestVideos = sortVideosByDescendingId(allVideos).slice(0, 3);
 
 // Interface pour typer les props de Navbar
 interface NavbarProps {
@@ -275,123 +226,10 @@ const HeroSection = () => {
   );
 };
 
-// Interface pour typer les props de VideoCard
-// Cela permet à TypeScript de vérifier que nous passons les bonnes données
-interface VideoCardProps {
-  video: {
-    id: string;
-    title: string;
-    description: string;
-    youtubeId: string;
-  };
-}
 
-// Composant pour afficher une carte de vidéo dans le slider
-// On réutilise la même structure que dans la page vidéo
-const VideoCard = ({ video }: VideoCardProps) => {
-  // État pour savoir si l'utilisateur survole la vidéo
-  const [isHovered, setIsHovered] = useState(false);
-
-  // URL de l'image thumbnail YouTube
-  const thumbnailUrl = `https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`;
-
-  // URL complète de la vidéo sur YouTube
-  const youtubeUrl = `https://www.youtube.com/watch?v=${video.youtubeId}`;
-
-  return (
-    <div className="glassmorphic-dark rounded-xl md:rounded-2xl overflow-hidden border border-white/10 flex-shrink-0 w-full">
-      {/* Conteneur pour l'image et le bouton play */}
-      <div
-        className="aspect-video relative group cursor-pointer overflow-hidden"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        onClick={() => window.open(youtubeUrl, "_blank")}
-      >
-        {/* Image thumbnail de la vidéo */}
-        <img
-          src={thumbnailUrl}
-          alt={video.title}
-          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-        />
-
-        {/* Overlay sombre qui apparaît au survol */}
-        <div
-          className={`absolute inset-0 bg-black/60 transition-opacity duration-300 ${
-            isHovered ? "opacity-100" : "opacity-0"
-          }`}
-        />
-
-        {/* Bouton play au centre - taille adaptative */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div
-            className={`bg-red-600/90 rounded-full p-3 md:p-4 transition-all duration-300 ${
-              isHovered
-                ? "scale-110 opacity-100"
-                : "scale-100 opacity-80"
-            }`}
-          >
-            {/* Icône play (triangle) - taille adaptative */}
-            <svg
-              className="w-8 h-8 md:w-12 md:h-12 text-white ml-1"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path d="M8 5v14l11-7z" />
-            </svg>
-          </div>
-        </div>
-
-        {/* Texte "Regarder sur YouTube" qui apparaît au survol - masqué sur mobile */}
-        <div
-          className={`absolute bottom-2 md:bottom-4 left-1/2 transform -translate-x-1/2 text-white text-xs md:text-sm font-semibold transition-opacity duration-300 hidden md:block ${
-            isHovered ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          Regarder sur YouTube
-        </div>
-      </div>
-
-      {/* Informations de la vidéo - padding adaptatif */}
-      <div className="p-4 md:p-6 space-y-2">
-        <h3 className="text-base md:text-xl font-semibold line-clamp-2">{video.title}</h3>
-        <p className="text-gray-400 text-xs md:text-sm line-clamp-2">{video.description}</p>
-      </div>
-    </div>
-  );
-};
-
-// Section slider pour afficher les 3 dernières vidéos
-const LatestVideosSection = () => {
-  // État pour savoir quelle vidéo est actuellement affichée dans le slider
-  // currentIndex commence à 0 (première vidéo)
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  // Fonction pour aller à la vidéo précédente
-  const goToPrevious = () => {
-    // Si on est à la première vidéo (index 0), on va à la dernière
-    if (currentIndex === 0) {
-      setCurrentIndex(latestVideos.length - 1);
-    } else {
-      // Sinon, on diminue l'index de 1
-      setCurrentIndex(currentIndex - 1);
-    }
-  };
-
-  // Fonction pour aller à la vidéo suivante
-  const goToNext = () => {
-    // Si on est à la dernière vidéo, on revient à la première
-    if (currentIndex === latestVideos.length - 1) {
-      setCurrentIndex(0);
-    } else {
-      // Sinon, on augmente l'index de 1
-      setCurrentIndex(currentIndex + 1);
-    }
-  };
-
-  // Fonction pour aller directement à une vidéo spécifique
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index);
-  };
+// Section pour afficher les derniers contenus (articles + vidéos mélangés)
+const LatestContentSection = () => {
+  const latestContent = getLatestContent(6);
 
   return (
     <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-red-600/20">
@@ -399,79 +237,38 @@ const LatestVideosSection = () => {
         {/* En-tête de la section */}
         <div className="text-center mb-8 md:mb-12">
           <p className="inline-flex px-3 md:px-4 py-1 rounded-full border border-red-600/30 text-red-400 text-xs md:text-sm uppercase tracking-[0.2em] md:tracking-[0.3em] mb-4">
-            Dernières Vidéos
+            Derniers Contenus
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 neon-glow px-4">
-            Nos dernières sorties
+            Nouveautés du Blog
           </h2>
           <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto px-4">
-            Découvrez les 3 dernières vidéos publiées sur notre chaîne YouTube
+            Découvrez nos derniers articles et vidéos sur les aventures gaming de la Team Kuroizana
           </p>
         </div>
 
-        {/* Conteneur du slider */}
-        <div className="relative">
-          {/* Bouton précédent - masqué sur très petits écrans, plus petit sur mobile */}
-          <button
-            onClick={goToPrevious}
-            className="absolute left-0 md:left-2 top-1/2 -translate-y-1/2 z-10 bg-black/60 hover:bg-black/80 rounded-full p-2 md:p-3 transition-all duration-300 border border-white/10 hover:border-red-500/50"
-            aria-label="Vidéo précédente"
-          >
-            <ChevronLeft className="w-4 h-4 md:w-6 md:h-6 text-white" />
-          </button>
-
-          {/* Conteneur des vidéos avec overflow caché - marges adaptatives */}
-          <div className="overflow-hidden mx-8 sm:mx-12 md:mx-16">
-            {/* Conteneur qui se déplace horizontalement */}
-            <div
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{
-                transform: `translateX(-${currentIndex * 100}%)`,
-              }}
-            >
-              {/* On affiche chaque vidéo - padding réduit sur mobile */}
-              {latestVideos.map((video) => (
-                <div key={video.id} className="w-full px-2 sm:px-4 flex-shrink-0">
-                  <VideoCard video={video} />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Bouton suivant - masqué sur très petits écrans, plus petit sur mobile */}
-          <button
-            onClick={goToNext}
-            className="absolute right-0 md:right-2 top-1/2 -translate-y-1/2 z-10 bg-black/60 hover:bg-black/80 rounded-full p-2 md:p-3 transition-all duration-300 border border-white/10 hover:border-red-500/50"
-            aria-label="Vidéo suivante"
-          >
-            <ChevronRight className="w-4 h-4 md:w-6 md:h-6 text-white" />
-          </button>
-        </div>
-
-        {/* Indicateurs de position (points en bas) */}
-        <div className="flex justify-center gap-2 mt-6 md:mt-8">
-          {latestVideos.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              className={`transition-all duration-300 rounded-full ${
-                index === currentIndex
-                  ? "w-6 md:w-8 h-2 bg-red-600"
-                  : "w-2 h-2 bg-gray-600 hover:bg-gray-500"
-              }`}
-              aria-label={`Aller à la vidéo ${index + 1}`}
-            />
+        {/* Grille de contenus */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {latestContent.map((content) => (
+            <ContentCard key={content.id} content={content} layout="grid" />
           ))}
         </div>
 
-        {/* Lien vers la page complète des vidéos */}
-        <div className="text-center mt-6 md:mt-8">
+        {/* Liens vers les pages complètes */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8 md:mt-12">
+          <Link
+            href="/article"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg glassmorphic-dark border border-red-600/30 text-red-400 hover:border-red-500/50 hover:text-red-300 transition font-semibold"
+          >
+            Tous les articles
+            <ChevronRight className="w-5 h-5" />
+          </Link>
           <Link
             href="/video"
-            className="inline-flex items-center gap-2 text-red-400 hover:text-red-300 transition font-semibold text-sm md:text-base"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg glassmorphic-dark border border-purple-600/30 text-purple-400 hover:border-purple-500/50 hover:text-purple-300 transition font-semibold"
           >
-            Voir toutes les vidéos
-            <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
+            Toutes les vidéos
+            <ChevronRight className="w-5 h-5" />
           </Link>
         </div>
       </div>
@@ -863,7 +660,7 @@ export default function Home() {
         setIsMobileMenuOpen={setIsMobileMenuOpen}
       />
       <HeroSection />
-      <LatestVideosSection />
+      <LatestContentSection />
       <ServerConfigSection />
       <AboutSection />
       <ContactSection />
