@@ -65,6 +65,19 @@ export const articles: BlogContent[] = [
     href: "/article/minecraft-construction",
     featured: false,
   },
+  {
+    id: "article-04",
+    type: "article",
+    title: "Farming Simulator 25 : La Team Construit l'enclos de vache et Achat du nouveaux terrain pour les haricots verts",
+    description: "Découvrez comment la Team Kuroizana construit un enclos pour les vaches et achète un nouveau terrain pour cultiver des haricots verts dans Farming Simulator 25.",
+    author: "Team Kuroizana",
+    date: "2025-11-10",
+    readTime: "10 min",
+    category: "Gameplay",
+    tags: ["Minecraft", "Construction", "Tutoriel", "Building"],
+    href: "/article/Farming1",
+    featured: false,
+  },
 ];
 
 // Données des vidéos
@@ -75,11 +88,11 @@ export const videos: BlogContent[] = [
     title: "Farming Simulator 25 On recolte de la canne a sucre avec la team Kuroizana.",
     description: "Episode de Farming Simulator 25 avec la team Kuroizana",
     author: "Team Kuroizana",
-    date: "2025-11-28",
+    date: "2025-12-14",
     category: "Gameplay",
     tags: ["Farming Simulator", "Coop", "Simulation", "2025"],
     href: "/video#video-05",
-    youtubeId: "CC8cc2HTkNo",
+    youtubeId: "FCkiQZ8h0rI",
     featured: true,
  
   },{
