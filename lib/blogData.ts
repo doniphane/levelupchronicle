@@ -81,7 +81,22 @@ export const articles: BlogContent[] = [
 ];
 
 // Données des vidéos
-export const videos: BlogContent[] = [
+export const videos: BlogContent[] = [{
+
+
+   id: "video-07",
+    type: "video",
+    title: "Je Démarre Ma Ferme ! - Farming Simulator 25 Let's Play #1 (No Commentary)",
+    description: "Episode de Farming Simulator 25 avec la team Kuroizana",
+    author: "Team Kuroizana",
+    date: "2025-12-19",
+    category: "Gameplay",
+    tags: ["Farming Simulator", "Coop", "Simulation", "2025"],
+    href: "/video#video-05",
+    youtubeId: "8lp9IfnvJ5A",
+    featured: true,
+ 
+  },
   {
     id: "video-06",
     type: "video",
