@@ -2,7 +2,7 @@
 // Ce fichier centralise tous les articles et vidéos pour faciliter la gestion
 
 export type ContentType = 'article' | 'video';
-export type ContentCategory = 'Guide' | 'Tutoriel' | 'Gameplay' | 'News' | 'Récap' | 'Construction';
+export type ContentCategory = 'Guide' | 'Tutoriel' | 'Gameplay' | 'News' | 'Récap' | 'Construction' | 'Unboxing';
 
 // Interface pour un contenu du blog (article ou vidéo)
 export interface BlogContent {
@@ -18,6 +18,7 @@ export interface BlogContent {
   tags: string[]; // Tags pour la recherche et le filtrage
   href: string; // URL du contenu
   youtubeId?: string; // Pour les vidéos
+  thumbnail?: string; // Chemin vers la miniature dans `public/`
   featured?: boolean; // Contenu mis en avant
   views?: number; // Nombre de vues (optionnel)
 }
@@ -82,6 +83,52 @@ export const articles: BlogContent[] = [
 
 // Données des vidéos
 export const videos: BlogContent[] = [{
+
+
+   id: "video-10",
+    type: "video",
+    title: "Retour sur Yu Gi Oh! 5D’s Legacy of the Duelist – Épisode 1 FR 2025",
+    description: "Retour sur Yu Gi Oh! 5D’s Legacy of the Duelist – Épisode 1 FR 2025",
+    author: "Team Kuroizana",
+    date: "2025-12-28",
+    category: "Gameplay",
+    tags: ["yu gi oh ", "2025"],
+    href: "/video#video-05",
+    youtubeId: "SBBZSpwMwVM",
+    thumbnail: "/minuature1.png",
+    featured: true,
+ 
+  },{
+
+
+   id: "video-09",
+    type: "video",
+    title: "Video Brute | Retour sur Duel Links après 2 ans - Rush Duel 2025",
+    description: "Video Brute | Retour sur Duel Links après 2 ans - Rush Duel 2025",
+    author: "Team Kuroizana",
+    date: "2025-12-28",
+    category: "Gameplay",
+    tags: ["yu gi oh ", "2025"],
+    href: "/video#video-05",
+    youtubeId: "kgJzg4frhrs",
+    featured: true,
+ 
+  },{
+
+
+   id: "video-08",
+    type: "video",
+    title: "Ouverture du Coffret Pokémon Mega Lucario EX pour Noël 2025 ! Suprise 🎄",
+    description: "Ouverture du Coffret Pokémon Mega Lucario EX pour Noël 2025 ! Suprise 🎄",
+    author: "Team Kuroizana",
+    date: "2025-12-27",
+    category: "Unboxing",
+    tags: ["pokemon", "2025"],
+    href: "/video#video-05",
+    youtubeId: "YFGRTa37Ylc",
+    featured: true,
+ 
+  },{
 
 
    id: "video-07",

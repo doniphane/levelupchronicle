@@ -14,8 +14,11 @@ export default function ContentCard({ content, layout = "grid" }: ContentCardPro
   const [isHovered, setIsHovered] = useState(false);
   const isVideo = content.type === "video";
 
-  // Pour les vidéos, on affiche la thumbnail YouTube
-  const thumbnailUrl = isVideo && content.youtubeId
+  // Pour les vidéos, on affiche la miniature fournie dans `content.thumbnail` si elle existe,
+  // sinon on retombe sur la thumbnail YouTube (si `youtubeId` présent).
+  const thumbnailUrl = content.thumbnail
+    ? content.thumbnail
+    : isVideo && content.youtubeId
     ? `https://img.youtube.com/vi/${content.youtubeId}/maxresdefault.jpg`
     : null;
 
@@ -42,7 +45,7 @@ export default function ContentCard({ content, layout = "grid" }: ContentCardPro
         >
           {/* Thumbnail pour les vidéos */}
           {thumbnailUrl && (
-            <div className="relative w-full sm:w-64 aspect-video sm:aspect-auto flex-shrink-0 overflow-hidden group">
+            <div className="relative w-full sm:w-64 aspect-video sm:aspect-auto shrink-0 overflow-hidden group">
               <img
                 src={thumbnailUrl}
                 alt={content.title}

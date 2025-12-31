@@ -17,6 +17,24 @@ import {
   Zap,
   CheckCircle2,
 } from "lucide-react";
+// Icône simple pour Bluesky
+function BlueskyIcon(props: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 32 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={props.className}
+    >
+      <rect width="32" height="32" rx="6" fill="#00AFFF" />
+      <path
+        d="M9 19c2-1 3-2 4-2 1 0 1 .5 1 1s0 1 1 1c1 0 2-1 4-2 0 0-4 6-9 6-1 0-1-2-1-4 0-1 1-1 0-0z"
+        fill="white"
+        opacity="0.95"
+      />
+    </svg>
+  );
+}
 import { getLatestContent } from "@/lib/blogData";
 import ContentCard from "@/components/blog/ContentCard";
 
@@ -74,30 +92,22 @@ const socialLinks = [
   {
     id: "youtube",
     label: "YouTube",
-    handle: "@TeamKuroizana",
-    href: "https://youtube.com",
+    handle: "@Noelson974",
+    href: "youtube.com/channel/UC3WOzwxuKHrkKjrYhoK-o4g/",
     icon: Youtube,
     accent: "text-red-400",
     border: "border-red-600/40",
   },
   {
-    id: "twitter",
-    label: "Twitter / X",
-    handle: "@LevelUpChroni",
-    href: "https://twitter.com/",
-    icon: Twitter,
-    accent: "text-sky-400",
+    id: "bluesky",
+    label: "Bluesky",
+    handle: "@Noelson974",
+    href: "https://bsky.app/profile/noelson974.bsky.social",
+    icon: BlueskyIcon,
+    accent: "text-sky-500",
     border: "border-sky-500/40",
   },
-  {
-    id: "discord",
-    label: "Discord",
-    handle: "Team Kuroizana",
-    href: "#",
-    icon: MessageCircle,
-    accent: "text-purple-400",
-    border: "border-purple-500/40",
-  },
+  
 ];
 
 // Interface pour typer les props de Navbar
@@ -276,212 +286,7 @@ const LatestContentSection = () => {
   );
 };
 
-const ServerConfigSection = () => {
-  return (
-    <section
-      id="server"
-      className="py-24 px-4 sm:px-6 lg:px-8 border-t border-red-600/20"
-    >
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div className="relative group">
-          <div className="absolute -inset-1 bg-gradient-to-r from-red-600 via-purple-600 to-cyan-500 rounded-[32px] blur opacity-60 group-hover:opacity-90 transition"></div>
-          <div className="relative overflow-hidden rounded-[32px] border border-white/10 bg-black/40">
-            <img
-              src="/1.jpg"
-              alt="Serveur VPS hautes performances"
-              className="w-full  object-cover opacity-90 transition-transform duration-500 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30"></div>
-            <div className="absolute bottom-6 left-6 right-6 space-y-3">
-              <div className="flex items-center gap-2">
-                <Activity className="w-4 h-4 text-green-400 animate-pulse" />
-                <p className="text-sm uppercase tracking-[0.3em] text-gray-400">
-                  Infra temps réel
-                </p>
-              </div>
-              <p className="text-2xl font-bold">Serveur de la communauté</p>
-              <div className="flex flex-wrap gap-3 text-sm">
-                <span className="px-3 py-1 rounded-full bg-white/10 border border-white/10 backdrop-blur-sm">
-                  Datacenter Paris
-                </span>
-                <span className="px-3 py-1 rounded-full bg-white/10 border border-white/10 backdrop-blur-sm">
-                  Tier IV
-                </span>
-                <span className="px-3 py-1 rounded-full bg-green-500/20 border border-green-500/50 backdrop-blur-sm text-green-400">
-                  <CheckCircle2 className="w-3 h-3 inline mr-1" />
-                  En ligne
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="space-y-8">
-          <div>
-            <p className="text-sm uppercase tracking-[0.4em] text-red-400 mb-4">
-              Configuration Serveur
-            </p>
-            <h2 className="text-4xl md:text-5xl font-black mb-4 neon-glow">
-              Nos performances
-            </h2>
-            <p className="text-gray-300 text-lg">
-              Un serveur taillé sur mesure pour tamer vos dinos, construire vos
-              mondes bloc par bloc, et dézinguer des hordes de zombies en toute
-              tranquillité.
-              <br />
-              Pendant que vous jouez, infra tourne comme une machine de guerre
-              pour la communauté.
-            </p>
-          </div>
-
-          {/* Carte de statut améliorée avec animations */}
-          <div className="glassmorphic-dark border border-white/5 rounded-2xl p-6 hover:border-red-500/30 transition-all duration-300">
-            <div className="flex flex-wrap items-center justify-between gap-6">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg shadow-green-500/30">
-                  <CheckCircle2 className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <p className="text-sm text-gray-400 uppercase tracking-wide">
-                    Statut
-                  </p>
-                  <div className="flex items-center gap-2">
-                    <p className="text-2xl font-bold text-white">Opérationnel</p>
-                    <span className="relative flex h-3 w-3">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="flex gap-6 text-sm">
-                <div className="text-center">
-                  <div className="flex items-center gap-1 justify-center mb-1">
-                    <Zap className="w-4 h-4 text-yellow-400" />
-                    <p className="text-gray-400">Latence</p>
-                  </div>
-                  <p className="text-white font-semibold text-lg">5 ms</p>
-                </div>
-                <div className="text-center">
-                  <div className="flex items-center gap-1 justify-center mb-1">
-                    <Activity className="w-4 h-4 text-green-400" />
-                    <p className="text-gray-400">Uptime</p>
-                  </div>
-                  <p className="text-white font-semibold text-lg">99.98%</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid gap-6">
-            {serverSpecs.map((spec) => {
-              const Icon = spec.icon;
-              const percentage = Math.round((spec.used / spec.total) * 100);
-              const hasBreakdown =
-                Array.isArray(spec.breakdown) && spec.breakdown.length > 0;
-              let breakdownGradient = "";
-
-              if (hasBreakdown && spec.breakdown) {
-                let cumulative = 0;
-                breakdownGradient = spec.breakdown
-                  .map((item) => {
-                    const start = (cumulative / spec.used) * 100;
-                    cumulative += item.value;
-                    const end = (cumulative / spec.used) * 100;
-                    return `${item.hex} ${start}% ${end}%`;
-                  })
-                  .join(", ");
-              }
-
-              return (
-                <div
-                  key={spec.id}
-                  className="glassmorphic-dark border border-white/5 rounded-2xl p-5"
-                >
-                  <div className="flex items-center gap-4 mb-4">
-                    <div
-                      className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${spec.gradient} flex items-center justify-center shadow-lg shadow-black/40`}
-                    >
-                      <Icon className="w-7 h-7 text-white" />
-                    </div>
-                    <div>
-                      <p className="text-sm uppercase tracking-wide text-gray-400">
-                        {spec.label}
-                      </p>
-                      <p className="text-xl font-bold text-white">
-                        {spec.description}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between text-sm text-gray-400 mb-2">
-                    <span>
-                      {spec.used} / {spec.total} {spec.unit}
-                    </span>
-                    <span>{percentage}%</span>
-                  </div>
-
-                  <div className="relative group/ram">
-                    <div className="h-2.5 bg-white/10 rounded-full overflow-hidden relative">
-                      {hasBreakdown ? (
-                        <div
-                          className="h-full rounded-full transition-all duration-1000 ease-out"
-                          style={{
-                            width: `${percentage}%`,
-                            backgroundImage: `linear-gradient(90deg, ${breakdownGradient})`,
-                            boxShadow: `0 0 10px rgba(220, 38, 38, 0.3)`,
-                            animation: `progress 1.5s ease-out forwards`,
-                          }}
-                        ></div>
-                      ) : (
-                        <div
-                          className={`h-full rounded-full bg-gradient-to-r ${spec.barColor} transition-all duration-1000 ease-out`}
-                          style={{ 
-                            width: `${percentage}%`,
-                            boxShadow: `0 0 10px rgba(220, 38, 38, 0.3)`,
-                            animation: `progress 1.5s ease-out forwards`,
-                          }}
-                        ></div>
-                      )}
-                      {/* Effet de brillance animé */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer rounded-full pointer-events-none"></div>
-                    </div>
-
-                    {hasBreakdown && spec.breakdown && (
-                      <div className="absolute -top-32 left-0 md:left-1/2 md:-translate-x-1/2 w-64 glassmorphic-dark border border-white/10 rounded-xl p-4 opacity-0 pointer-events-none group-hover/ram:opacity-100 group-hover/ram:pointer-events-auto transition duration-300">
-                        <p className="text-xs uppercase tracking-[0.3em] text-gray-400 mb-3">
-                          Applications
-                        </p>
-                        <div className="space-y-2">
-                          {spec.breakdown.map((item) => (
-                            <div
-                              key={item.label}
-                              className="flex items-center justify-between text-sm"
-                            >
-                              <div className="flex items-center gap-2">
-                                <span
-                                  className={`w-2.5 h-2.5 rounded-full ${item.dotClass}`}
-                                ></span>
-                                <span>{item.label}</span>
-                              </div>
-                              <span className="text-gray-300 font-semibold">
-                                {item.value} Go
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
+/* ServerConfigSection removed */
 
 const AboutSection = () => {
   return (
@@ -661,7 +466,6 @@ export default function Home() {
       />
       <HeroSection />
       <LatestContentSection />
-      <ServerConfigSection />
       <AboutSection />
       <ContactSection />
       <Footer />
