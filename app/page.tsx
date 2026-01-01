@@ -141,9 +141,6 @@ const Navbar = ({ isScrolled, isMobileMenuOpen, setIsMobileMenuOpen }: NavbarPro
             <a href="#home" className="hover:text-red-500 transition">
               Accueil
             </a>
-            <a href="#server" className="hover:text-red-500 transition">
-              Serveur
-            </a>
             <a href="#about" className="hover:text-red-500 transition">
               À propos
             </a>
@@ -172,9 +169,6 @@ const Navbar = ({ isScrolled, isMobileMenuOpen, setIsMobileMenuOpen }: NavbarPro
           <div className="md:hidden mt-4 space-y-4 pb-4">
             <a href="#home" className="block hover:text-red-500 transition">
               Accueil
-            </a>
-            <a href="#server" className="block hover:text-red-500 transition">
-              Serveur
             </a>
             <a href="#about" className="block hover:text-red-500 transition">
               À propos
@@ -216,11 +210,11 @@ const HeroSection = () => {
 
       {/* Hero Content */}
       <div className="relative h-full flex flex-col justify-center items-center text-center px-4">
-        <div className="animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-black mb-6 neon-glow">
-          Team Kuroizana
+        <div className="animate-fade-in bg-black/40 bg-clip-padding px-6 py-4 rounded-lg inline-block">
+          <h1 className="text-5xl md:text-7xl font-black mb-6 neon-glow text-white">
+            Team Kuroizana
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-2xl mx-auto">
             Découvrez les moments épiques du gaming, les meilleurs clips et les
             stratégies gagnantes
           </p>
