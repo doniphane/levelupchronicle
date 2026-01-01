@@ -79,10 +79,39 @@ export const articles: BlogContent[] = [
     href: "/article/Farming1",
     featured: false,
   },
+    {
+    id: "article-05",
+    type: "article",
+    title: "Bonne année 2026 de la part de la Team Kuroizana !",
+    description: "Toute la Team Kuroizana vous souhaite une excellente année 2026 remplie de succès et de bonheur !",
+    author: "Team Kuroizana",
+    date: "2025-11-10",
+    readTime: "10 min",
+    category: "Gameplay",
+    tags: ["Récap",],
+    href: "/article/annee2026",
+    featured: false,
+  },
 ];
 
 // Données des vidéos
-export const videos: BlogContent[] = [{
+export const videos: BlogContent[] = [
+  
+  {
+  id: "video-11",
+    type: "video",
+    title: "Cette livraison de plastique était plus compliquée que prévu… | ETS2 2025",
+    description: "Cette livraison de plastique était plus compliquée que prévu… | ETS2 2025",
+    author: "Team Kuroizana",
+    date: "2026-01-01",
+    category: "Gameplay",
+    tags: ["Euro TRuck2 ", "2026"],
+    href: "/video#video-05",
+    youtubeId: "XSF2sCtLqyk",
+    thumbnail: "/minuature2.png",
+    featured: true,
+ 
+  },{
 
 
    id: "video-10",
