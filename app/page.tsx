@@ -93,7 +93,7 @@ const socialLinks = [
     id: "youtube",
     label: "YouTube",
     handle: "@Noelson974",
-    href: "youtube.com/channel/UC3WOzwxuKHrkKjrYhoK-o4g/",
+    href: "https://www.youtube.com/@noelson9749",
     icon: Youtube,
     accent: "text-red-400",
     border: "border-red-600/40",
