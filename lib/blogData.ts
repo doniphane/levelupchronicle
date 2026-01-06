@@ -25,47 +25,7 @@ export interface BlogContent {
 
 // Données des articles
 export const articles: BlogContent[] = [
-  {
-    id: "article-01",
-    type: "article",
-    title: "Liste de tout mes dinos apprivoisés sur le serveur ASA",
-    description: "Découvrez la liste de tous les dinos apprivoisés sur le serveur ASA avec la Team Kuroizana.",
-    author: "Team Kuroizana",
-    date: "2025-11-21",
-    updatedAt: "2025-11-27",
-    readTime: "5 min",
-    category: "Guide",
-    tags: ["ARK", "Dinosaures", "Apprivoisement", "Guide", "ASA"],
-    href: "/article/ark-debuter",
-    featured: true,
-    views: 1250,
-  },
-  {
-    id: "article-02",
-    type: "article",
-    title: "ATM10 To the Sky : Récap de nos débuts",
-    description: "Retour sur notre premier stream sur le modpack ATM10 To the Sky, un skyblock dans les airs avec la team.",
-    author: "Team Kuroizana",
-    date: "2025-11-15",
-    readTime: "7 min",
-    category: "Récap",
-    tags: ["Minecraft", "ATM10", "Skyblock", "Modpack", "Stream"],
-    href: "/article/atm10-recap",
-    featured: false,
-  },
-  {
-    id: "article-03",
-    type: "article",
-    title: "Les meilleures techniques de construction sur Minecraft",
-    description: "Apprenez les techniques avancées de construction utilisées par la Team Kuroizana pour créer des builds épiques.",
-    author: "Team Kuroizana",
-    date: "2025-11-10",
-    readTime: "10 min",
-    category: "Tutoriel",
-    tags: ["Minecraft", "Construction", "Tutoriel", "Building"],
-    href: "/article/minecraft-construction",
-    featured: false,
-  },
+  
   {
     id: "article-04",
     type: "article",
@@ -98,6 +58,20 @@ export const articles: BlogContent[] = [
 export const videos: BlogContent[] = [
   
   {
+  id: "video-12",
+    type: "video",
+    title: "Pixelmon – MA PREMIÈRE AVENTURE 🔥 (Format court –10 min)",
+    description: "Pixelmon – MA PREMIÈRE AVENTURE 🔥 (Format court –10 min)",
+    author: "Team Kuroizana",
+    date: "2026-01-06",
+    category: "Gameplay",
+    tags: ["Pixelmon ", "2026"],
+    href: "/video#video-05",
+    youtubeId: "_0iDV6ZnPqA",
+    thumbnail: "/minuature5.png",
+    featured: true,
+ 
+  },{
   id: "video-11",
     type: "video",
     title: "Cette livraison de plastique était plus compliquée que prévu… | ETS2 2025",
