@@ -58,6 +58,20 @@ export const articles: BlogContent[] = [
 export const videos: BlogContent[] = [
   
   {
+  id: "video-13",
+    type: "video",
+    title: "Pixelmon – Constrution de la base  🔥 (Format court –10 min)",
+    description: "Pixelmon – Constrution de la base  🔥 (Format court –10 min)",
+    author: "Team Kuroizana",
+    date: "2026-01-08",
+    category: "Gameplay",
+    tags: ["Pixelmon ", "2026"],
+    href: "/video#video-05",
+    youtubeId: "OdIlDI5vRiQ",
+    thumbnail: "/minuature6.png",
+    featured: true,
+ 
+  },{
   id: "video-12",
     type: "video",
     title: "Pixelmon – MA PREMIÈRE AVENTURE 🔥 (Format court –10 min)",
@@ -71,7 +85,7 @@ export const videos: BlogContent[] = [
     thumbnail: "/minuature5.png",
     featured: true,
  
-  },{
+  },{ 
   id: "video-11",
     type: "video",
     title: "Cette livraison de plastique était plus compliquée que prévu… | ETS2 2025",
