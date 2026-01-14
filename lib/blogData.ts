@@ -55,9 +55,37 @@ export const articles: BlogContent[] = [
 ];
 
 // Données des vidéos
-export const videos: BlogContent[] = [
+export const videos: BlogContent[] = [  {
   
-  {
+   id: "video-15",
+    type: "video",
+    title: "Roblox Avions en papier - Voler en avion en papier sur Roblox 2026",
+    description: "Roblox Avions en papier - Voler en avion en papier sur Roblox 2026",
+    author: "Team Kuroizana",
+    date: "2026-01-14",
+    category: "Gameplay",
+    tags: ["Pixelmon ", "2026"],
+    href: "/video#video-05",
+    youtubeId: "5w5MIYeFyo8",
+    thumbnail: "/minuature8.png",
+    featured: true,
+ 
+  },{
+  
+   id: "video-14",
+    type: "video",
+    title: "PC Building Simulator 2 : FIN DU TUTO 🔥 L’aventure commence !",
+    description: "PC Building Simulator 2 : FIN DU TUTO 🔥 L’aventure commence !",
+    author: "Team Kuroizana",
+    date: "2026-01-11",
+    category: "Gameplay",
+    tags: ["Pixelmon ", "2026"],
+    href: "/video#video-05",
+    youtubeId: "s18ZcrmGoTg",
+    thumbnail: "/minuature7.png",
+    featured: true,
+ 
+  },{
   id: "video-13",
     type: "video",
     title: "Pixelmon – Constrution de la base  🔥 (Format court –10 min)",
