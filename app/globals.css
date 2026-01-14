@@ -12,56 +12,8 @@
 :root {
   --background: #0a0e27;
   --foreground: #ffffff;
-  --primary: #dc2626;
-  --primary-dark: #7f1d1d;
-  --secondary: #8b5cf6;
-  --accent-cyan: #06b6d4;
-  --accent-pink: #ec4899;
-  --accent-violet: #8b5cf6;
-  --neutral-dark: #1a1f3a;
-  --neutral-darker: #0f1219;
-
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-}
-
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
+  /* Improved banner: sticky under the fixed navbar, cleaner visual style and smooth RTL marquee */
+  
   --muted-foreground: oklch(0.708 0 0);
   --accent: oklch(0.269 0 0);
   --accent-foreground: oklch(0.985 0 0);
@@ -257,4 +209,63 @@ h4 {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Banner slider / banderole */
+.banner-slider {
+  position: relative; /* non fixe — reste dans le flux et défile avec la page */
+  width: 100%;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 0 1rem; /* espace latéral */
+  margin-top: 64px; /* place sous la navbar fixe */
+  z-index: 10;
+  background: rgba(6, 8, 15, 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 6px 20px rgba(2,6,23,0.45);
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.banner-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.banner-track {
+  display: inline-flex;
+  gap: 2rem;
+  white-space: nowrap;
+  align-items: center;
+  will-change: transform;
+  animation: marquee 18s linear infinite;
+}
+
+.banner-text {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  color: var(--foreground);
+  font-size: 0.98rem;
+  letter-spacing: 0.2px;
+  background: linear-gradient(90deg, rgba(220,38,38,0.06), rgba(236,72,153,0.03));
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.banner-track:hover { animation-play-state: paused; }
+
+@media (max-width: 640px) {
+  .banner-slider { height: 44px; margin-top: 56px; padding: 0 0.75rem; }
+  .banner-text { font-size: 0.86rem; padding: 6px 10px; }
+  .banner-track { gap: 1rem; animation-duration: 14s; }
 }

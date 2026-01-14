@@ -37,6 +37,7 @@ function BlueskyIcon(props: { className?: string }) {
 }
 import { getLatestContent } from "@/lib/blogData";
 import ContentCard from "@/components/blog/ContentCard";
+import BannerSlider from "@/components/BannerSlider";
 
 const serverSpecs = [
   {
@@ -458,6 +459,7 @@ export default function Home() {
         isMobileMenuOpen={isMobileMenuOpen}
         setIsMobileMenuOpen={setIsMobileMenuOpen}
       />
+      <BannerSlider />
       <HeroSection />
       <LatestContentSection />
       <AboutSection />
