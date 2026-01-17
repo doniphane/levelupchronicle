@@ -54,8 +54,26 @@ export const articles: BlogContent[] = [
   },
 ];
 
+
+
+
 // Données des vidéos
 export const videos: BlogContent[] = [  {
+  
+   id: "video-16",
+    type: "video",
+    title: "Enfin de l’ÉNERGIE INFINIE ⚡ | Mon premier Extreme Reactor – Minecraft Moddé",
+    description: "Enfin de l’ÉNERGIE INFINIE ⚡ | Mon premier Extreme Reactor – Minecraft Moddé",
+    author: "Team Kuroizana",
+    date: "2026-01-17",
+    category: "Gameplay",
+    tags: ["Pixelmon ", "2026"],
+    href: "/video#video-05",
+    youtubeId: "TjJbgTchx2Q",
+    thumbnail: "/minuature9.png",
+    featured: true,
+ 
+  },{
   
    id: "video-15",
     type: "video",

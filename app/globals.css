@@ -13,7 +13,7 @@
   --background: #0a0e27;
   --foreground: #ffffff;
   /* Improved banner: sticky under the fixed navbar, cleaner visual style and smooth RTL marquee */
-  
+
   --muted-foreground: oklch(0.708 0 0);
   --accent: oklch(0.269 0 0);
   --accent-foreground: oklch(0.985 0 0);
@@ -225,8 +225,8 @@ h4 {
   background: rgba(6, 8, 15, 0.6);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-  box-shadow: 0 6px 20px rgba(2,6,23,0.45);
-  border-bottom: 1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 6px 20px rgba(2, 6, 23, 0.45);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
 
 .banner-inner {
@@ -254,18 +254,38 @@ h4 {
   color: var(--foreground);
   font-size: 0.98rem;
   letter-spacing: 0.2px;
-  background: linear-gradient(90deg, rgba(220,38,38,0.06), rgba(236,72,153,0.03));
+  background: linear-gradient(
+    90deg,
+    rgba(220, 38, 38, 0.06),
+    rgba(236, 72, 153, 0.03)
+  );
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
-.banner-track:hover { animation-play-state: paused; }
+.banner-track:hover {
+  animation-play-state: paused;
+}
 
 @media (max-width: 640px) {
-  .banner-slider { height: 44px; margin-top: 56px; padding: 0 0.75rem; }
-  .banner-text { font-size: 0.86rem; padding: 6px 10px; }
-  .banner-track { gap: 1rem; animation-duration: 14s; }
+  .banner-slider {
+    height: 44px;
+    margin-top: 56px;
+    padding: 0 0.75rem;
+  }
+  .banner-text {
+    font-size: 0.86rem;
+    padding: 6px 10px;
+  }
+  .banner-track {
+    gap: 1rem;
+    animation-duration: 14s;
+  }
 }
