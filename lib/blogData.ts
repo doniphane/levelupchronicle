@@ -57,8 +57,25 @@ export const articles: BlogContent[] = [
 
 
 
+
+
 // Données des vidéos
-export const videos: BlogContent[] = [  {
+export const videos: BlogContent[] = [   {
+  
+   id: "video-17",
+    type: "video",
+    title: "FS25 IRÉALISTE  5 000 000 L de BLÉ récoltés sur ma partie iréaliste",
+    description: "FS25 IRÉALISTE  5 000 000 L de BLÉ récoltés sur ma partie iréaliste",
+    author: "Team Kuroizana",
+    date: "2026-01-19",
+    category: "Gameplay",
+    tags: ["Pixelmon ", "2026"],
+    href: "/video#video-05",
+    youtubeId: "PenWkt9Uvqs",
+    thumbnail: "/minuature10.png",
+    featured: true,
+ 
+  },{
   
    id: "video-16",
     type: "video",
