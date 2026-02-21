@@ -11,6 +11,7 @@ interface SearchAndFilterProps {
   categories: ContentCategory[];
   selectedCategory: ContentCategory | "all";
   selectedType: ContentType | "all";
+  hideTypeFilter?: boolean; // Masquer le filtre de type (utile pour pages spécifiques)
 }
 
 export default function SearchAndFilter({
@@ -20,6 +21,7 @@ export default function SearchAndFilter({
   categories,
   selectedCategory,
   selectedType,
+  hideTypeFilter = false,
 }: SearchAndFilterProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -89,41 +91,43 @@ export default function SearchAndFilter({
         } md:flex flex-col md:flex-row gap-4`}
       >
         {/* Filtre par type */}
-        <div className="flex-1">
-          <label className="text-sm text-gray-400 mb-2 block">Type de contenu</label>
-          <div className="flex gap-2">
-            <button
-              onClick={() => onFilterType("all")}
-              className={`flex-1 px-4 py-2 rounded-lg border transition-all duration-300 ${
-                selectedType === "all"
-                  ? "bg-red-600/20 border-red-600/50 text-red-400"
-                  : "glassmorphic-dark border-white/10 text-gray-400 hover:border-red-500/30"
-              }`}
-            >
-              Tout
-            </button>
-            <button
-              onClick={() => onFilterType("article")}
-              className={`flex-1 px-4 py-2 rounded-lg border transition-all duration-300 ${
-                selectedType === "article"
-                  ? "bg-red-600/20 border-red-600/50 text-red-400"
-                  : "glassmorphic-dark border-white/10 text-gray-400 hover:border-red-500/30"
-              }`}
-            >
-              Articles
-            </button>
-            <button
-              onClick={() => onFilterType("video")}
-              className={`flex-1 px-4 py-2 rounded-lg border transition-all duration-300 ${
-                selectedType === "video"
-                  ? "bg-purple-600/20 border-purple-600/50 text-purple-400"
-                  : "glassmorphic-dark border-white/10 text-gray-400 hover:border-purple-500/30"
-              }`}
-            >
-              Vidéos
-            </button>
+        {!hideTypeFilter && (
+          <div className="flex-1">
+            <label className="text-sm text-gray-400 mb-2 block">Type de contenu</label>
+            <div className="flex gap-2">
+              <button
+                onClick={() => onFilterType("all")}
+                className={`flex-1 px-4 py-2 rounded-lg border transition-all duration-300 ${
+                  selectedType === "all"
+                    ? "bg-red-600/20 border-red-600/50 text-red-400"
+                    : "glassmorphic-dark border-white/10 text-gray-400 hover:border-red-500/30"
+                }`}
+              >
+                Tout
+              </button>
+              <button
+                onClick={() => onFilterType("article")}
+                className={`flex-1 px-4 py-2 rounded-lg border transition-all duration-300 ${
+                  selectedType === "article"
+                    ? "bg-red-600/20 border-red-600/50 text-red-400"
+                    : "glassmorphic-dark border-white/10 text-gray-400 hover:border-red-500/30"
+                }`}
+              >
+                Articles
+              </button>
+              <button
+                onClick={() => onFilterType("video")}
+                className={`flex-1 px-4 py-2 rounded-lg border transition-all duration-300 ${
+                  selectedType === "video"
+                    ? "bg-purple-600/20 border-purple-600/50 text-purple-400"
+                    : "glassmorphic-dark border-white/10 text-gray-400 hover:border-purple-500/30"
+                }`}
+              >
+                Vidéos
+              </button>
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Filtre par catégorie */}
         <div className="flex-1">

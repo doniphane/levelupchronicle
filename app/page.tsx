@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Menu,
   X,
@@ -35,9 +36,8 @@ function BlueskyIcon(props: { className?: string }) {
     </svg>
   );
 }
-import { getLatestContent } from "@/lib/blogData";
+import { getLatestContent, getLatestArticles } from "@/lib/blogData";
 import ContentCard from "@/components/blog/ContentCard";
-import BannerSlider from "@/components/BannerSlider";
 
 const serverSpecs = [
   {
@@ -129,8 +129,14 @@ const Navbar = ({ isScrolled, isMobileMenuOpen, setIsMobileMenuOpen }: NavbarPro
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-red-600 to-pink-600 rounded-lg flex items-center justify-center">
-              <Play className="w-4 h-4 text-white fill-white" />
+            <div className="w-10 h-10 relative">
+              <Image
+                src="/gamepad-logo.svg"
+                alt="Team Kuroizana Logo"
+                width={40}
+                height={40}
+                className="rounded-lg"
+              />
             </div>
             <span className="text-xl font-bold neon-glow">
               Team Kuroizana
@@ -193,7 +199,7 @@ const Navbar = ({ isScrolled, isMobileMenuOpen, setIsMobileMenuOpen }: NavbarPro
 const HeroSection = () => {
   return (
     <section id="home" className="relative h-screen w-full overflow-hidden">
-      {/* Background Video or Image */}
+      {/* Background Video */}
       <div className="absolute inset-0">
         <video
           autoPlay
@@ -205,26 +211,74 @@ const HeroSection = () => {
         >
           <source src="/2025-12-15 18-23-06.mp4" type="video/mp4" />
         </video>
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/60"></div>
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80"></div>
       </div>
 
       {/* Hero Content */}
       <div className="relative h-full flex flex-col justify-center items-center text-center px-4">
-        <div className="animate-fade-in bg-black/40 bg-clip-padding px-6 py-4 rounded-lg inline-block">
-          <h1 className="text-5xl md:text-7xl font-black mb-6 neon-glow text-white">
-            Team Kuroizana
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-2xl mx-auto">
-            Découvrez les moments épiques du gaming, les meilleurs clips et les
-            stratégies gagnantes
-          </p>
-          <a
-            href="#server"
-            className="inline-block px-8 py-3 bg-red-600 hover:bg-red-700 rounded-lg font-bold transition-all duration-300 hover:shadow-[0_0_20px_rgba(220,38,38,0.5)]"
-          >
-            Voir la configuration
-          </a>
+        <div className="space-y-8 max-w-5xl">
+          {/* Badge animé */}
+          <div className="animate-scale-in opacity-0 animation-delay-1">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-red-500/30 bg-red-950/30 backdrop-blur-sm text-red-400 text-sm font-semibold uppercase tracking-wider">
+              <Activity className="w-4 h-4 animate-pulse" />
+              En Direct - Gaming & Fun
+            </span>
+          </div>
+
+          {/* Titre principal avec effet glitch */}
+          <div className="animate-slide-left opacity-0 animation-delay-2">
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-black mb-4 neon-glow text-white animate-glitch">
+              Team Kuroizana
+            </h1>
+          </div>
+
+          {/* Sous-titre */}
+          <div className="animate-slide-right opacity-0 animation-delay-3">
+            <p className="text-xl md:text-3xl mb-6 text-gray-200 max-w-3xl mx-auto font-semibold leading-relaxed">
+              Découvrez les moments <span className="text-red-400 neon-glow">épiques</span> du gaming,<br className="hidden md:block" />
+              les meilleurs clips et les stratégies gagnantes
+            </p>
+          </div>
+
+          {/* Boutons d'action */}
+          <div className="animate-scale-in opacity-0 animation-delay-4 flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a
+              href="/video"
+              className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105 animate-pulse-glow"
+            >
+              <Play className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              Voir les vidéos
+            </a>
+            <a
+              href="/article"
+              className="inline-flex items-center gap-2 px-8 py-4 glassmorphic-dark rounded-xl font-bold text-lg transition-all duration-300 hover:border-red-500/50 hover:bg-red-950/20 hover:scale-105"
+            >
+              <MessageCircle className="w-5 h-5" />
+              Lire les articles
+            </a>
+          </div>
+
+          {/* Mots-clés ambiance */}
+          <div className="animate-fade-in opacity-0 animation-delay-4 flex flex-wrap justify-center gap-4 mt-12">
+            <div className="glassmorphic-dark px-8 py-4 rounded-full animate-float border border-red-500/20">
+              <div className="text-lg md:text-xl font-black text-red-400 neon-glow uppercase tracking-wide">Bonne Humeur</div>
+            </div>
+            <div className="glassmorphic-dark px-8 py-4 rounded-full animate-float border border-purple-500/20" style={{animationDelay: "0.5s"}}>
+              <div className="text-lg md:text-xl font-black text-purple-400 neon-glow-pink uppercase tracking-wide">Fun</div>
+            </div>
+            <div className="glassmorphic-dark px-8 py-4 rounded-full animate-float border border-cyan-500/20" style={{animationDelay: "1s"}}>
+              <div className="text-lg md:text-xl font-black text-cyan-400 neon-glow-cyan uppercase tracking-wide">Communauté</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce opacity-0 animation-delay-4">
+        <div className="flex flex-col items-center gap-2 text-gray-400">
+          <span className="text-sm uppercase tracking-wider">Scroll</span>
+          <ChevronRight className="w-6 h-6 rotate-90" />
         </div>
       </div>
     </section>
@@ -282,6 +336,48 @@ const LatestContentSection = () => {
 };
 
 /* ServerConfigSection removed */
+
+// Section pour afficher les derniers articles uniquement
+const LatestArticlesSection = () => {
+  const latestArticles = getLatestArticles(3);
+
+  return (
+    <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-purple-600/20">
+      <div className="max-w-7xl mx-auto">
+        {/* En-tête de la section */}
+        <div className="text-center mb-8 md:mb-12">
+          <p className="inline-flex px-3 md:px-4 py-1 rounded-full border border-purple-600/30 text-purple-400 text-xs md:text-sm uppercase tracking-[0.2em] md:tracking-[0.3em] mb-4">
+            Derniers Articles
+          </p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 neon-glow-pink px-4">
+            À Lire Absolument
+          </h2>
+          <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto px-4">
+            Plongez dans nos récits, guides et actualités rédigés par la Team Kuroizana
+          </p>
+        </div>
+
+        {/* Grille d'articles */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {latestArticles.map((article) => (
+            <ContentCard key={article.id} content={article} layout="grid" />
+          ))}
+        </div>
+
+        {/* Lien vers tous les articles */}
+        <div className="flex justify-center mt-8 md:mt-12">
+          <Link
+            href="/article"
+            className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105"
+          >
+            Découvrir tous les articles
+            <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const AboutSection = () => {
   return (
@@ -410,13 +506,21 @@ const Footer = () => {
     <footer className="border-t border-red-600/20 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-6 bg-gradient-to-br from-red-600 to-pink-600 rounded-lg"></div>
-            <span className="font-bold">LevelUp Chronicle</span>
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 relative">
+              <Image
+                src="/gamepad-logo.svg"
+                alt="Team Kuroizana Logo"
+                width={40}
+                height={40}
+                className="rounded-lg"
+              />
+            </div>
+            <span className="text-xl font-bold neon-glow">Team Kuroizana</span>
           </div>
 
           <p className="text-gray-500 text-center text-sm">
-            © 2025 LevelUp Chronicle. Tous les droits réservés.
+            © 2026 Team Kuroizana. Tous les droits réservés.
           </p>
 
           <div className="flex gap-4">
@@ -459,9 +563,9 @@ export default function Home() {
         isMobileMenuOpen={isMobileMenuOpen}
         setIsMobileMenuOpen={setIsMobileMenuOpen}
       />
-      <BannerSlider />
       <HeroSection />
       <LatestContentSection />
+      <LatestArticlesSection />
       <AboutSection />
       <ContactSection />
       <Footer />

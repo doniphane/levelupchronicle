@@ -6,7 +6,7 @@ import { articles, getUniqueCategories, ContentCategory, ContentType, searchCont
 import ContentCard from "@/components/blog/ContentCard";
 import SearchAndFilter from "@/components/blog/SearchAndFilter";
 import Breadcrumb from "@/components/blog/Breadcrumb";
-import { LayoutGrid, List } from "lucide-react";
+import { LayoutGrid, List, FileText } from "lucide-react";
 
 export default function ArticlePage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -46,17 +46,30 @@ export default function ArticlePage() {
 
         {/* En-tête de la page */}
         <header className="text-center space-y-6">
-          <p className="inline-flex px-4 py-1 rounded-full border border-red-600/30 text-red-400 text-sm uppercase tracking-[0.3em]">
-            Articles
-          </p>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-red-600/30 bg-red-950/30 backdrop-blur-sm">
+            <FileText className="w-4 h-4 text-red-400" />
+            <span className="text-red-400 text-sm uppercase tracking-[0.3em]">Articles & Guides</span>
+          </div>
 
-          <h1 className="text-4xl md:text-6xl font-black neon-glow">
-            Articles et Guides
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black neon-glow">
+            Articles et Guides Gaming
           </h1>
 
-          <p className="text-gray-300 text-lg max-w-3xl mx-auto">
-            Découvrez nos articles, guides et récits sur les aventures de la Team Kuroizana et de la communauté.
+          <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+            Découvrez nos <span className="text-red-400 font-semibold">articles exclusifs</span>, guides détaillés et récits épiques de la Team Kuroizana.
           </p>
+
+          {/* Stats */}
+          <div className="flex flex-wrap justify-center gap-6 pt-4">
+            <div className="glassmorphic-dark px-6 py-3 rounded-lg border border-red-600/20">
+              <div className="text-2xl font-black text-red-400 neon-glow">{articles.length}</div>
+              <div className="text-sm text-gray-400 uppercase tracking-wide">Articles</div>
+            </div>
+            <div className="glassmorphic-dark px-6 py-3 rounded-lg border border-purple-600/20">
+              <div className="text-2xl font-black text-purple-400 neon-glow-pink">{categories.length}</div>
+              <div className="text-sm text-gray-400 uppercase tracking-wide">Catégories</div>
+            </div>
+          </div>
         </header>
 
         {/* Barre de recherche et filtres */}
@@ -67,6 +80,7 @@ export default function ArticlePage() {
           categories={categories}
           selectedCategory={selectedCategory}
           selectedType={selectedType}
+          hideTypeFilter={true}
         />
 
         {/* Barre d'outils */}
@@ -107,7 +121,7 @@ export default function ArticlePage() {
           <section
             className={
               layout === "grid"
-                ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
                 : "space-y-6"
             }
           >

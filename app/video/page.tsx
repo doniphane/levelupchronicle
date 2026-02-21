@@ -5,7 +5,7 @@ import { videos, getUniqueCategories, ContentCategory, ContentType, searchConten
 import ContentCard from "@/components/blog/ContentCard";
 import SearchAndFilter from "@/components/blog/SearchAndFilter";
 import Breadcrumb from "@/components/blog/Breadcrumb";
-import { LayoutGrid, List } from "lucide-react";
+import { LayoutGrid, List, Play } from "lucide-react";
 
 export default function VideoPage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -45,17 +45,30 @@ export default function VideoPage() {
 
         {/* En-tête de la page */}
         <header className="text-center space-y-6">
-          <p className="inline-flex px-4 py-1 rounded-full border border-purple-600/30 text-purple-400 text-sm uppercase tracking-[0.3em]">
-            Vidéos
-          </p>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-purple-600/30 bg-purple-950/30 backdrop-blur-sm">
+            <Play className="w-4 h-4 text-purple-400" />
+            <span className="text-purple-400 text-sm uppercase tracking-[0.3em]">Vidéos Gaming</span>
+          </div>
 
-          <h1 className="text-4xl md:text-6xl font-black neon-glow">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black neon-glow-pink">
             Les meilleurs moments de la Team Kuroizana
           </h1>
 
-          <p className="text-gray-300 text-lg max-w-3xl mx-auto">
-            Retrouvez toutes les vidéos de la Team Kuroizana ainsi que des défis et des raids de la communauté.
+          <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+            Retrouvez toutes les vidéos de la Team Kuroizana : <span className="text-purple-400 font-semibold">gameplays épiques</span>, défis fun et aventures de la communauté.
           </p>
+
+          {/* Stats */}
+          <div className="flex flex-wrap justify-center gap-6 pt-4">
+            <div className="glassmorphic-dark px-6 py-3 rounded-lg border border-purple-600/20">
+              <div className="text-2xl font-black text-purple-400 neon-glow-pink">{videos.length}</div>
+              <div className="text-sm text-gray-400 uppercase tracking-wide">Vidéos</div>
+            </div>
+            <div className="glassmorphic-dark px-6 py-3 rounded-lg border border-red-600/20">
+              <div className="text-2xl font-black text-red-400 neon-glow">{categories.length}</div>
+              <div className="text-sm text-gray-400 uppercase tracking-wide">Catégories</div>
+            </div>
+          </div>
         </header>
 
         {/* Barre de recherche et filtres */}
@@ -66,6 +79,7 @@ export default function VideoPage() {
           categories={categories}
           selectedCategory={selectedCategory}
           selectedType={selectedType}
+          hideTypeFilter={true}
         />
 
         {/* Barre d'outils */}
@@ -106,7 +120,7 @@ export default function VideoPage() {
           <section
             className={
               layout === "grid"
-                ? "grid grid-cols-1 md:grid-cols-2 gap-8"
+                ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
                 : "space-y-6"
             }
           >

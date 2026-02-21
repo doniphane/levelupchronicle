@@ -25,7 +25,20 @@ export interface BlogContent {
 
 // Données des articles
 export const articles: BlogContent[] = [
-  
+  {
+    id: "article-dockhand",
+    type: "article",
+    title: "J'ai découvert Dockhand : L'interface Docker moderne pour mon serveur local",
+    description: "Découvrez Dockhand, une interface de gestion Docker moderne, sécurisée et open-source que j'ai récemment installée sur mon serveur local. Un game-changer pour gérer mes conteneurs !",
+    author: "Team Kuroizana",
+    date: "2026-02-20",
+    readTime: "8 min",
+    category: "Guide",
+    tags: ["Docker", "Serveur", "Self-hosted", "DevOps", "Linux"],
+    href: "/article/dockhand",
+    thumbnail: "/dockhand.webp", 
+    featured: true,
+  },
   {
     id: "article-04",
     type: "article",
@@ -61,6 +74,21 @@ export const articles: BlogContent[] = [
 
 // Données des vidéos
 export const videos: BlogContent[] = [   {
+  
+   id: "video-18",
+    type: "video",
+    title: "🔥 DECK DESTRUCTION & CHAÎNE DE FER ! Mon Deck Contrôle sur Yu-Gi-Oh! Legacy of the Duelist 🐉💀",
+    description: "🔥 DECK DESTRUCTION & CHAÎNE DE FER ! Mon Deck Contrôle sur Yu-Gi-Oh! Legacy of the Duelist 🐉💀",
+    author: "Team Kuroizana",
+    date: "2026-02-21",
+    category: "Gameplay",
+    tags: ["Yu-Gi-Oh", "2026"],
+    href: "/video#video-05",
+    youtubeId: "ziwKdYvafmE",
+    thumbnail: "/minuature11.webp",
+    featured: true,
+ 
+  },{
   
    id: "video-17",
     type: "video",

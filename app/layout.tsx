@@ -4,7 +4,12 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'Team Kuroizana - Gaming Blog',
   description: 'Discover epic gaming moments, gameplay tips, and gaming culture. Your gateway to gaming excellence.',
-
+  icons: {
+    icon: [
+      { url: '/gamepad-logo.svg', type: 'image/svg+xml' },
+    ],
+    apple: '/gamepad-logo.svg',
+  },
 }
 
 export default function RootLayout({
@@ -13,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="fr">
+    <html lang="fr" data-scroll-behavior="smooth">
       <head>
         <script src="https://cdn.tailwindcss.com"></script>
         <style>{`
