@@ -73,7 +73,22 @@ export const articles: BlogContent[] = [
 
 
 // Données des vidéos
-export const videos: BlogContent[] = [   {
+export const videos: BlogContent[] = [    {
+  
+   id: "video-19",
+    type: "video",
+    title: "Légendes Pokémon : Z-A  Le Tournoir final pour obtenir mon Rang B",
+    description: "Légendes Pokémon : Z-A  Le Tournoir final pour obtenir mon Rang B",
+    author: "Team Kuroizana",
+    date: "2026-02-25",
+    category: "Gameplay",
+    tags: ["Pokemon ", "2026"],
+    href: "/video#video-05",
+    youtubeId: "MaQCvRF5o5c",
+    thumbnail: "/minuature12.jpg",
+    featured: true,
+ 
+  },{
   
    id: "video-18",
     type: "video",
