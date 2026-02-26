@@ -5,6 +5,7 @@ import { Calendar, Clock, User, ArrowLeft } from "lucide-react";
 import ReadingProgress from "@/components/blog/ReadingProgress";
 import RelatedContent from "@/components/blog/RelatedContent";
 import Breadcrumb from "@/components/blog/Breadcrumb";
+import Navbar from "@/components/Navbar";
 // Nous utilisons une seule grande image pour les vœux
 
 // Interface pour typer les informations de l'article
@@ -34,6 +35,9 @@ const articleMeta: ArticleMeta = {
 export default function ArkDebuterArticlePage() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-black via-slate-950 to-black">
+      {/* Navigation */}
+      <Navbar />
+
       {/* Barre de progression de lecture */}
       <ReadingProgress />
 

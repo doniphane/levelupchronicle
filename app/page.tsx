@@ -1,22 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
-  Menu,
-  X,
   Play,
   Youtube,
-  Twitter,
   MessageCircle,
   Cpu,
   MemoryStick,
   HardDrive,
   ChevronRight,
   Activity,
-  Zap,
-  CheckCircle2,
 } from "lucide-react";
 // Icône simple pour Bluesky
 function BlueskyIcon(props: { className?: string }) {
@@ -38,6 +32,7 @@ function BlueskyIcon(props: { className?: string }) {
 }
 import { getLatestContent, getLatestArticles } from "@/lib/blogData";
 import ContentCard from "@/components/blog/ContentCard";
+import Navbar from "@/components/Navbar";
 
 const serverSpecs = [
   {
@@ -111,90 +106,6 @@ const socialLinks = [
   
 ];
 
-// Interface pour typer les props de Navbar
-interface NavbarProps {
-  isScrolled: boolean;
-  isMobileMenuOpen: boolean;
-  setIsMobileMenuOpen: (value: boolean) => void;
-}
-
-const Navbar = ({ isScrolled, isMobileMenuOpen, setIsMobileMenuOpen }: NavbarProps) => {
-  return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "glassmorphic" : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <div className="flex justify-between items-center">
-          {/* Logo */}
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 relative">
-              <Image
-                src="/gamepad-logo.svg"
-                alt="Team Kuroizana Logo"
-                width={40}
-                height={40}
-                className="rounded-lg"
-              />
-            </div>
-            <span className="text-xl font-bold neon-glow">
-              Team Kuroizana
-            </span>
-          </div>
-
-          {/* Desktop Menu */}
-          <div className="hidden md:flex gap-8">
-            <a href="#home" className="hover:text-red-500 transition">
-              Accueil
-            </a>
-            <a href="#about" className="hover:text-red-500 transition">
-              À propos
-            </a>
-            <a href="/article" className="hover:text-red-500 transition">
-              Articles
-            </a>
-            <a href="/video" className="hover:text-red-500 transition">
-              Vidéos
-            </a>
-            <a href="#contact" className="hover:text-red-500 transition">
-              Contact
-            </a>
-          </div>
-
-          {/* Mobile Menu Toggle */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 space-y-4 pb-4">
-            <a href="#home" className="block hover:text-red-500 transition">
-              Accueil
-            </a>
-            <a href="#about" className="block hover:text-red-500 transition">
-              À propos
-            </a>
-            <a href="/article" className="block hover:text-red-500 transition">
-              Articles
-            </a>
-            <a href="/video" className="block hover:text-red-500 transition">
-              Vidéos
-            </a>
-            <a href="#contact" className="block hover:text-red-500 transition">
-              Contact
-            </a>
-          </div>
-        )}
-      </div>
-    </nav>
-  );
-};
 
 const HeroSection = () => {
   return (
@@ -237,7 +148,7 @@ const HeroSection = () => {
           <div className="animate-slide-right opacity-0 animation-delay-3">
             <p className="text-xl md:text-3xl mb-6 text-gray-200 max-w-3xl mx-auto font-semibold leading-relaxed">
               Découvrez les moments <span className="text-red-400 neon-glow">épiques</span> du gaming,<br className="hidden md:block" />
-              les meilleurs clips et les stratégies gagnantes
+              les meilleurs clips de la Team Kuroizana
             </p>
           </div>
 
@@ -544,25 +455,9 @@ const Footer = () => {
 };
 
 export default function Home() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <main className="min-h-screen bg-gradient-to-b from-black via-slate-950 to-black">
-      <Navbar
-        isScrolled={isScrolled}
-        isMobileMenuOpen={isMobileMenuOpen}
-        setIsMobileMenuOpen={setIsMobileMenuOpen}
-      />
+      <Navbar />
       <HeroSection />
       <LatestContentSection />
       <LatestArticlesSection />

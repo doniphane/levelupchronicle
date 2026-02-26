@@ -397,11 +397,6 @@ export function filterByCategory(category: ContentCategory, content: BlogContent
   return content.filter(item => item.category === category);
 }
 
-// Filtrer par type (article ou vidéo)
-export function filterByType(type: ContentType): BlogContent[] {
-  return allContent.filter(item => item.type === type);
-}
-
 // Rechercher dans le contenu (titre, description, tags)
 export function searchContent(query: string, content: BlogContent[] = allContent): BlogContent[] {
   const lowerQuery = query.toLowerCase();
@@ -412,21 +407,10 @@ export function searchContent(query: string, content: BlogContent[] = allContent
   );
 }
 
-// Obtenir le contenu mis en avant
-export function getFeaturedContent(): BlogContent[] {
-  return allContent.filter(item => item.featured === true);
-}
-
 // Obtenir les catégories uniques
 export function getUniqueCategories(): ContentCategory[] {
   const categories = allContent.map(item => item.category);
   return Array.from(new Set(categories));
-}
-
-// Obtenir tous les tags uniques
-export function getAllTags(): string[] {
-  const tags = allContent.flatMap(item => item.tags);
-  return Array.from(new Set(tags)).sort();
 }
 
 // Obtenir le contenu connexe (même catégorie ou tags similaires)
@@ -456,9 +440,4 @@ export function getRelatedContent(currentId: string, limit: number = 3): BlogCon
     .sort((a, b) => b.score - a.score);
 
   return scored.slice(0, limit).map(({ item }) => item);
-}
-
-// Obtenir le contenu par ID
-export function getContentById(id: string): BlogContent | undefined {
-  return allContent.find(item => item.id === id);
 }

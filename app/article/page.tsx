@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { useState, useMemo } from "react";
-import { articles, getUniqueCategories, ContentCategory, ContentType, searchContent, filterByCategory, filterByType } from "@/lib/blogData";
+import { articles, getUniqueCategories, ContentCategory, ContentType, searchContent, filterByCategory } from "@/lib/blogData";
 import ContentCard from "@/components/blog/ContentCard";
 import SearchAndFilter from "@/components/blog/SearchAndFilter";
 import Breadcrumb from "@/components/blog/Breadcrumb";
+import Navbar from "@/components/Navbar";
 import { LayoutGrid, List, FileText } from "lucide-react";
 
 export default function ArticlePage() {
@@ -40,6 +41,7 @@ export default function ArticlePage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-black via-slate-950 to-black">
+      <Navbar />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 space-y-12">
         {/* Breadcrumb */}
         <Breadcrumb items={[{ label: "Articles" }]} />
