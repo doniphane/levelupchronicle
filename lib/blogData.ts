@@ -75,6 +75,21 @@ export const articles: BlogContent[] = [
 // Données des vidéos
 export const videos: BlogContent[] = [    {
   
+   id: "video-20",
+    type: "video",
+    title: "Légendes Pokémon : Z-A  On affronte les 3 dernier mega ferox ",
+    description: "Venez vivre avec nous le dernier combat contre les 3 dernier mega ferox dans légendes pokémon : Z-A",
+    author: "Team Kuroizana",
+    date: "2026-02-26",
+    category: "Gameplay",
+    tags: ["Pokemon ", "2026"],
+    href: "/video#video-05",
+    youtubeId: "tFSiOUPXu_s",
+    thumbnail: "/minuature13.webp",
+    featured: true,
+ 
+  }, {
+  
    id: "video-19",
     type: "video",
     title: "Légendes Pokémon : Z-A  Le Tournoir final pour obtenir mon Rang B",
